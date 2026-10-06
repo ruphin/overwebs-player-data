@@ -1,1 +1,47 @@
-import{GluonElement}from'../gluonjs/gluon.js';const player={unlocks:{}},elements=[],notify=()=>{elements.forEach((a)=>{a.dispatchEvent(new Event('player-changed'))})};class OverwebsPlayerData extends GluonElement{set name(a){player.name=a,notify()}get name(){return player.name}set level(a){player.level=a,notify()}get level(){return player.level}set avatar(a){player.avatar=a,notify()}get avatar(){return player.avatar}set unlocks(a){Object.assign(player.unlocks,a),notify()}get unlocks(){return player.unlocks}set player(a){const b=a.unlocks;delete a.unlocks,Object.assign(player,a),b&&(this.unlocks=b),notify()}get player(){return player}connectedCallback(){super.connectedCallback(),elements.push(this)}disconnectedCallback(){super.disconnectedCallback(),elements.splice(elements.indexOf(this),1)}}customElements.define(OverwebsPlayerData.is,OverwebsPlayerData);
+import { GluonElement as e } from "../gluonjs/gluon.js";
+//#region \0rolldown/runtime.js
+var t = { unlocks: {} }, n = [], notify = () => {
+	n.forEach((e) => {
+		e.dispatchEvent(new Event("player-changed"));
+	});
+}, OverwebsPlayerData = class extends e {
+	set name(e) {
+		t.name = e, notify();
+	}
+	get name() {
+		return t.name;
+	}
+	set level(e) {
+		t.level = e, notify();
+	}
+	get level() {
+		return t.level;
+	}
+	set avatar(e) {
+		t.avatar = e, notify();
+	}
+	get avatar() {
+		return t.avatar;
+	}
+	set unlocks(e) {
+		Object.assign(t.unlocks, e), notify();
+	}
+	get unlocks() {
+		return t.unlocks;
+	}
+	set player(e) {
+		let n = e.unlocks;
+		delete e.unlocks, Object.assign(t, e), n && (this.unlocks = n), notify();
+	}
+	get player() {
+		return t;
+	}
+	connectedCallback() {
+		super.connectedCallback(), n.push(this);
+	}
+	disconnectedCallback() {
+		super.disconnectedCallback(), n.splice(n.indexOf(this), 1);
+	}
+};
+customElements.define(OverwebsPlayerData.is, OverwebsPlayerData);
+//#endregion
